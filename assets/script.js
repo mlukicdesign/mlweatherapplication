@@ -1,80 +1,66 @@
 // // Define Application Variables
 
 const formEl = document.getElementById('search-form');
-// const searchEl = document.getElementById('search');
-// const inputValue = document.getElementById("searchInput").value;
+const searchEl = document.getElementById('search');
+const searchInput = document.getElementById('searchEntry');
 
 
+const outputElement = document.getElementById("output");
 
-// // Search city via api function
+let searchFormEl = document.querySelector('#search-form')
 
-// function getForecast(cityname){
-//     const url = `api.openweathermap.org/data/2.5/forecast?q=${inputValue}&appid={API key}`;
-//     return fetch(url)
-//     .then(function(response){
-//         return responsejson();
-//     });
-// }
 
-// //When user click on submit form
-
-// formEl.addEventListener('submit', function(event){
-//     event.preventDefault();
-
-//     getForecast()
-// });
 
 
 
 // handle submit
 
-let searchFormEl = document.querySelector('#search-form');
-
 function handleSearchFormSubmit(event) {
     event.preventDefault();
     
     // let searchInputVal = document.querySelector('#search-input').value;
-    let queryString = "http://api.openweathermap.org/data/2.5/forecast?q=Perth&appid=d41a700a8c02c2dcea0a697c4dbe482d"
-    
+    let queryString = `http://api.openweathermap.org/data/2.5/forecast?q=${searchInput.value}&appid=d41a700a8c02c2dcea0a697c4dbe482d&units=metric`
+    console.log(searchInput.value);
 
     fetch(queryString)
-        .then(function (response) {
-            if(response.ok) {
-                return response.json()
-            }
-        });
+    .then(response => response.json())
+    .then(data => {
+     console.log(data)
 
-        console.log(queryString);
+     
+        
+
+     const weatherData = data.list[0].main;
+     console.log(weatherData)
+
+    
+    
+     const mainTemp = data.list[0].main.temp;
+     console.log(mainTemp)
+
+
+    // warning!
+     for (var i = 0; i < data.list[0].main.temp; i++) {
+        
+        const newElement = document.createElement("p");
+        newElement.textContent = `The temperature is ${mainTemp}`;
+        outputElement.appendChild(newElement);
+     }
+    ..
+
+
+     const newElement = document.createElement("p");
+     newElement.textContent = `The temperature is ${mainTemp}`;
+     outputElement.appendChild(newElement);
+     
+    })
+    .catch(error => console.error(error)); 
+    
+    printResults()
+
 }
 
 searchFormEl.addEventListener('submit', handleSearchFormSubmit);
 
 
-
-
-
-
-
-
-
-
-// // Test Zone
-
-
-fetch("http://api.openweathermap.org/data/2.5/forecast?q=Perth&appid=d41a700a8c02c2dcea0a697c4dbe482d")
-  .then(response => response.json())
-  .then(data => {
-   console.log(data)
-  })
-  .catch(error => console.error(error));
-
-
-
-
-// const cityUrl = "http://api.openweathermap.org/geo/1.0/direct?q=Perth&limit=5&appid=c36729007c993b432071623f51e48494"
-
-// console.log(cityUrl);
-
-// const testUrl = "http://api.openweathermap.org/data/2.5/forecast?q=Perth&appid=d41a700a8c02c2dcea0a697c4dbe482d"
-// console.log(testUrl);
 
