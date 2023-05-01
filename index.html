@@ -6,33 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link>
     <title>Document</title>
-    <Link rel="stylesheet" src="/assets/style.css"></Link>
+    <Link rel="stylesheet" href="/assets/style.css"></Link>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100;300;500&display=swap" rel="stylesheet">  
 </head>
 <body>
-    <div>
-
+<div>
+    <section class="header">
         <form id="search-form">
             <label for="search">Search Here</label>
             <input type="text" id="searchEntry" placeholder="search city here">
-            <select id="format-input" class="form-input">
-                <option value="" disabled selected>Select a city</option>
-                <option value="Sydney">Sydney</option>
-                <option value="Melbourne">Melbourne</option>
-                <option value="Perth">Perth</option>
-                <option value="Brisbane">Brisbane</option>
-                <option value="Canberra">Canberra</option>
-                <option value="Darwin">Darwin</option>
-                <option value="Hobart">Hobart</option>
-            </select>
             <button>Submit</button>
         </form>
-
-        <div id="output">
-
-
+    </section>
+    <section class="content">
+        <div id="local-storage">
+            
         </div>
+        <div id="output">
+            <div id="upper-row"></div>
+            <div id="lower-row"></div>
+        </div>
+    </section>
+</div>
 
-    </div>
 <script src="/assets/script.js"></script>
 <script src="/assets/display-results.js"></script>
 </body>

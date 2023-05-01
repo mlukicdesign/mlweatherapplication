@@ -1,0 +1,64 @@
+
+/* div {
+    display: inline-block;
+    border: 1px solid black;
+} */
+
+
+body {
+    font-family: 'Sora', sans-serif;
+}
+
+
+#search-form {
+    margin-bottom: 5%;
+}
+
+
+
+.header {
+    width: 100%;
+}
+
+
+.content {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+
+#local-storage {
+    height: 100%;
+    border: 1px solid black;
+    width: 30%;
+}
+
+#output {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.big-div {
+    width: 100%;
+    height: 50%;
+    padding: 2%;
+  }
+
+  .small-div {
+    flex-grow: 1;
+    height: 50%;
+    padding: 10px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  

@@ -1,7 +1,3 @@
-var resultTextEl = document.querySelector('#result-text');
-var resultContentEl = document.querySelector('#result-content');
-
-
 
 
 // // create function to print api results
