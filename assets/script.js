@@ -11,11 +11,11 @@ let searchFormEl = document.querySelector('#search-form')
 function searchApi() {
 
 
-  const searchInput = document.getElementById('searchEntry');
-
-
+  let searchInput = document.getElementById('searchEntry');
   let queryString = `http://api.openweathermap.org/data/2.5/forecast?q=${searchInput.value}&appid=d41a700a8c02c2dcea0a697c4dbe482d&units=metric`
   console.log(searchInput.value);
+
+  
 
   fetch(queryString)
     .then(response => response.json())
@@ -26,6 +26,7 @@ function searchApi() {
       parentDiv.innerHTML = '';
 
 
+      // Loop through API data
 
       const weatherData = data.list[0].main;
       console.log(weatherData)
@@ -39,9 +40,10 @@ function searchApi() {
         // output.push(data.list[i].weather[i].icon);
         output.push(data.list[i].main.humidity);
         output.push(data.list[i].wind.speed);
+        
       }
 
-      
+
 
       // weatherOutput.forEach(temp => console.log(temp));
 
@@ -52,7 +54,7 @@ function searchApi() {
 
       const dtTxt = [];
       for (let i = 5; i < data.list.length; i += 6) {
-        dtTxt.push(data.list[i].dt_txt.slice(0,10));
+        dtTxt.push(data.list[i].dt_txt.slice(0, 10));
       }
 
       const weatherIcon = [];
@@ -62,7 +64,7 @@ function searchApi() {
 
       const mainHumidity = [];
       for (let i = 5; i < data.list.length; i += 6) {
-        mainHumidity.push(data.list[i].main.humidity);
+        mainHumidity.push(data.list[i].main.humidity + "%");
       }
 
       const wind = [];
@@ -99,9 +101,10 @@ function searchApi() {
       // Save search entry.
 
       localStorage.setItem('searchEntry', searchInput.value);
+
       // using local storage to display a history of past searches
 
-      const storedData = localStorage.getItem('searchEntry'); // Replace 'myData' with the name of your local storage item
+      const storedData = localStorage.getItem('searchEntry');
       if (storedData) {
         const button = document.createElement('button');
         button.textContent = storedData;
@@ -109,26 +112,43 @@ function searchApi() {
         localDiv.appendChild(button);
       }
 
+      // Retrieve from local storage *not working*
+
+      const localStorageDiv = document.getElementById('local-storage');
+      const buttons = localStorageDiv.querySelectorAll('button');
+
+      buttons.forEach(button => {
+        button.addEventListener('click', function () {
+          this.getAttribute(storedData);
+          let searchInput = storedData
+          console.log(searchInput);
+          console.log(queryString)
+
+         
+
+        });
+        
+      });
+
+      
     });
-}
 
-      // .catch(error => console.error(error));
+  }
 
 
-    
+
+
 
 // Local storage to dispaly history of past searches
-
-
 
 
 
 // Handle submit button
 
 function handleSearchFormSubmit(event) {
-        event.preventDefault();
-        searchApi();
-      }
+  event.preventDefault();
+  searchApi();
+}
 
 
-  searchFormEl.addEventListener('submit', handleSearchFormSubmit);
+searchFormEl.addEventListener('submit', handleSearchFormSubmit);

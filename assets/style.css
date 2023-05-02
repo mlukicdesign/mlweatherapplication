@@ -7,8 +7,10 @@
 
 body {
     font-family: 'Sora', sans-serif;
-    margin: 2%;
+    background-color: lightskyblue;
+    margin: 50px
 }
+
 
 
 #search-form {
@@ -18,15 +20,16 @@ body {
 .header {
     width: 100%;
     margin-bottom: 50px;
-    padding: 10px;
+    padding-left: 2%;
     border: solid 1px black;
     border-radius: 10px;
+    background-color: aliceblue;
 }
 
 
 .content {
     width: 100%;
-    height: 80vh;
+    height: 100%;
     display: flex;
 }
 
@@ -38,10 +41,33 @@ body {
     border: solid 1px black;
     border-radius: 10px;
     margin-right: 10px;
+    background-color: aliceblue;
 }
+
+@media (max-width: 767px) {
+    /* Styles for screens smaller than 768px, such as mobile devices */
+    .content {
+      display: block;
+    }
+  
+    #side-column {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    #output {
+        width: 100%;
+    }
+  }
 
 #local-storage button {
     width: 100%;
+    padding: 15px 50px;
+    background-color: cornflowerblue;
+    color: white;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-bottom: 10px;
 }
 
 #output {
@@ -50,6 +76,10 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    background-color: aliceblue;
+    border: 1px solid black;
+    padding: 2%;
+    border-radius: 20px;
 }
 
 
@@ -61,7 +91,7 @@ body {
 
   .small-div {
     flex-grow: 1;
-    height: 50%;
+    min-height: 50%;
     padding: 10px;
   }
   
@@ -72,4 +102,20 @@ body {
   
   form input {
     width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 0.5rem;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  form button {
+    padding: 15px 50px;
+    background-color: cornflowerblue;
+    border: 1px solid;
+    border-radius: 20px;
+  }
+
+  form button:hover {
+    background-color: aliceblue;
   }
